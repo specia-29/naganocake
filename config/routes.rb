@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root to: "admin/items#index"
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
