@@ -3,7 +3,10 @@
       <h2>商品一覧</h2>
 
   <div class="text-right">
-      <%#= link_to "新規登録" ,new_admins_item_path, class:"btn btn-lg btn-primary" %>
+      <%= link_to  class:"btn btn-lg btn-primary" do %>
+      <!--↑↑リンク追加↑↑-->
+      <i class="fal fa-plus-circle" aria-hidden="true"></i>
+      <% end %>
   </div>
 
       <table class="table">
