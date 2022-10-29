@@ -3,7 +3,7 @@
       <h2>商品一覧</h2>
 
   <div class="text-right">
-      <%= link_to  class:"btn btn-lg btn-primary" do %>
+      <%= link_to new_admin_item_path class:"btn btn-lg btn-primary" do %>
       <!--↑↑リンク追加↑↑-->
       <i class="fal fa-plus-circle" aria-hidden="true"></i>
       <% end %>
@@ -21,13 +21,16 @@
         </thead>
 
         <tbody>
+          <% @items.each do |item| %>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td><%= item.id %></td>
+              <td><%= item.name %></td>
+              <td><%= item.price %></td>
+              <td><%= item.genre.name %></td>
+              <td><%= item.is_active %></td>
+              <!--if文で条件分岐-->
             </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
