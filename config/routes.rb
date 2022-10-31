@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   namespace :admin do
   # root => 'top#top'
    resources :items
+   resources :genres
+
   end
 end
 
