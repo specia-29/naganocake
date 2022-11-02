@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   # root => 'top#top'
    resources :items
    resources :genres
+  # patch 'genres/:id' => 'genres#update', as: 'update_genre'
+
 
   end
 end
