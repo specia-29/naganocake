@@ -29,12 +29,12 @@
               <label for="item_is_active">販売ステータス</label>
                 <div class="is_active">
                   <div>
-                    <%= f.radio_button :is_active, true %>
-                    <%= f.label :is_active, '販売中', value: true %>
+                    <%= f.radio_button :is_active, false %>
+                    <%= f.label :is_active, '販売中', value: false %>
                   </div>
                   <div>
-                    <%= f.radio_button :is_active, false %>
-                    <%= f.label :is_active, '販売停止中', value: false %>
+                    <%= f.radio_button :is_active, true %>
+                    <%= f.label :is_active, '販売停止中', value: true %>
                   </div>
                 </div>
             </div>
