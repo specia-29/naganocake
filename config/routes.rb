@@ -20,7 +20,6 @@ Rails.application.routes.draw do
    resources :genres
   # patch 'genres/:id' => 'genres#update', as: 'update_genre'
 
-
   end
 end
 
