@@ -19,6 +19,13 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
+  def edit
+  end
+
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
