@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
-  root to: "admin/items#index"
+  get 'homes/top'
+  # root to: "public/registrations#new"
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
+
   }
 
   # 管理者用
@@ -13,13 +15,15 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+  
+  namespace :customer do
+  end
 
   namespace :admin do
-  # root => 'top#top'
+   root :to => 'homes#top', as: '/admin'
    resources :items
    resources :genres
    resources :customers
-  # patch 'genres/:id' => 'genres#update', as: 'update_genre'
 
   end
 end
