@@ -5,10 +5,22 @@ class Admin::CustomersController < ApplicationController
   end
 
   def edit
+    @customers = Customer.find(params[:id])
   end
 
   def show
     @customer = Customer.find(params[:id])
+  end
+
+  def update
+    @customer = Customer.find(params[:id])
+    if @item.update(customer_params)
+      redirect_to admin_customer_path(@customer)
+      flash[:notice_update] = "ジャンル情報を更新しました！"
+    else
+      @customers = Customer.all
+      render 'edit'
+    end
   end
 
   private
