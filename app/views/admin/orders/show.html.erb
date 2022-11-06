@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>注文履歴詳細</h2>
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>購入者</td>
+            <td><%= @order.last_name + "　"  + @order.first_name %></td>
+            <!--余裕があれば購入者ごとの注文履歴ページへのリンク遷移-->
+          </tr>
+          <tr>
+            <td>注文日</td>
+            <td><%= @order.created_at %></td>
+          </tr>
+          <tr>
+            <td>配送先</td>
+            <td>
+              <%= @order.postal_code %>
+              <%= @order.address %>
+            </td>
+          </tr>
+          <tr>
+            <td>支払方法</td>
+            <td><%= @order.payment_method %></td>
+          </tr>
+          <tr>
+            <td>注文ステータス</td>
+            <td><%= @order.status %></td>
+            <div class="form-group">
+              <label for="item_genre_id">ジャンル</label>
+              ここの編集〜
+               <%= f.collection_select :status, @order.all, :id, :name, include_blank: "--選択してください--" %>
+            </div>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @order.each do |order| %>
+            <tr>
+              <td><%= order.item.name %></td>
+              <td><%= order.item.price %></td>
+              <td><%= order.order_detail.amount %></td>
+              <td><%= order.total_payment %></td>
+              <td><%= order.order_detail.making_status %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

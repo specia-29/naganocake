@@ -1,14 +1,13 @@
-<h2><%#= @customer.first_name + @customer.last_name %>さんの会員情報編集</h2>
+<h2><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h2>
 
   <%= form_with model: @customer, url: admin_customer_path do |f| %>
 
   <div class="row">
     <label class="col-lg-3">会員ID</label>
     <div class="col-lg-3">
-      <%= f.text_field :id %>
+      <%= @customer.id %>
     </div>
   </div><br>
-
 
   <div class="row">
     <label class="col-lg-3">氏名</label>

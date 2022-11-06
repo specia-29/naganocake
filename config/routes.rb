@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'homes/top'
   # root to: "public/registrations#new"
   # 顧客用
   # URL /customers/sign_in ...
@@ -15,15 +14,16 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   namespace :customer do
   end
 
   namespace :admin do
-   root :to => 'homes#top', as: '/admin'
    resources :items
    resources :genres
    resources :customers
+   resources :orders
+   resources :order_details
 
   end
 end
