@@ -15,15 +15,17 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  namespace :customer do
+  namespace :public do
+    resources :homes
   end
 
   namespace :admin do
-   resources :items
-   resources :genres
-   resources :customers
-   resources :orders
-   resources :order_details
+    root :to => 'homes#top'
+    resources :items
+    resources :genres
+    resources :customers
+    resources :orders
+    resources :order_details
 
   end
 end
