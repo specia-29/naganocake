@@ -16,22 +16,22 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td><%#= link_to order.created_at 注文履歴詳細ページのパスを指定 %></td>
-              <td><%#= order.last_name + "　" + order.first_name %></td>
-              <td><%#= order.amount %></td>
+              <td><%= link_to admin_order_path(order.id), order.created_at %></td>
+              <td><%= order.last_name + "　" + order.first_name %></td>
+              <td><%= order.amount %></td>
               <td>
-                <%# if order.making_status == 0 %>
+                <% if order.making_status == 0 %>
                   制作不可
-                <%# else if order.making_status == 1 %>
+                <% else if order.making_status == 1 %>
                   制作待ち
-                <%# else if order.making_status == 2 %>
+                <% else if order.making_status == 2 %>
                   製作中
-                <%# else %>
+                <% else %>
                 　制作完了
-                <%# end %>
+                <% end %>
               </td>
             </tr>
-          <%# end %>
+          <% end %>
         </tbody>
       </table>
     </div>

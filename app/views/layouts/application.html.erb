@@ -10,8 +10,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-    <%= yield %>
-  </body>
+    <body>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      <%= yield %>
+    </body>
 </html>
