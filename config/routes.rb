@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root :to => 'homes#top'
+    get '/about', to: 'homes#about'
+    get '/items', to: 'items#index'
   end
 
   namespace :admin do
