@@ -5,6 +5,7 @@ class Public::AddressesController < ApplicationController
   end
 
   def edit
+    @address = Address.find(params[:id])
   end
 
   def create
@@ -17,6 +18,14 @@ class Public::AddressesController < ApplicationController
   end
 
   def update
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
+      redirect_to addresses_path(@address)
+      flash[:notice_update] = "ジャンル情報を更新しました！"
+    else
+      @addresses = Address.all
+      render 'edit'
+    end
   end
 
   def destroy

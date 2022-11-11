@@ -32,6 +32,7 @@
               <label for="item_genre_id">ジャンル</label>
               ここの編集〜
                <%= f.collection_select :status, @order.all, :id, :name, include_blank: "--選択してください--" %>
+               <%= @order.submit "更新", class: "btn btn-success" %>
             </div>
           </tr>
         </tbody>
@@ -45,6 +46,7 @@
             <th>数量</th>
             <th>小計</th>
             <th>製作ステータス</th>
+            <th></th>
           </tr>
         </thead>
 
@@ -56,10 +58,15 @@
               <td><%= order.order_detail.amount %></td>
               <td><%= order.total_payment %></td>
               <td><%= order.order_detail.making_status %></td>
+              <td><%= order.submit "更新", class: "btn btn-success" %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+
+      商品合計
+      送料
+      請求金額合計
     </div>
   </div>
 </div>
