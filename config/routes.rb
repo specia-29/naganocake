@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     patch '/customers/mypage', to: 'customers#update'
     get '/public/customers/edit', to: 'customers#edit'
     get '/customers/withdrawal', to: 'customers#withdrawal'
+    get '/addresses', to: 'addresses#index'
+    post '/addresses', to: 'addresses#index'
+    get 'addresses/:id/edit' => 'addresses#edit', as: 'edit_address'
+    patch 'addresses/:id' => 'addresses#update', as: 'update_adress'
   end
 
   namespace :admin do

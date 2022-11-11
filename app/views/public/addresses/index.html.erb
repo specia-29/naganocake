@@ -1,2 +1,54 @@
-<h1>Public::Addresses#index</h1>
-<p>Find me in app/views/public/addresses/index.html.erb</p>
+<!--addresses_path-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>配送先登録/一覧</h2>
+        <%= form_with model: @address, url: addresses_path do |f| %>
+        <div class="row">
+          <label class="col-lg-3">郵便番号(ハイフンなし)</label>
+          <div class="col-lg-3">
+            <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+          </div>
+        </div><br>
+        <div class="row">
+          <label class="col-lg-3">住所</label>
+          <div class="col-lg-3">
+            <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+          </div>
+        </div><br>
+        <div class="row">
+          <label class="col-lg-3">宛名</label>
+          <div class="col-lg-3">
+            <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+            <%= f.submit "新規登録", class: 'btn btn-success' %>
+          </div>
+        </div><br>
+        <% end %>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @addresses.each do |address| %>
+            <tr>
+              <td><%= address.postal_code %></td>
+              <td><%= address.address %></td>
+              <td><%= address.name %></td>
+              <td>
+                <%= link_to "編集する", edit_addresses_path, class: 'btn btn-success' %>
+                <%= link_to "削除する", edit_addresses_path, class: 'btn btn-danger' %>
+              </td>
+              <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
