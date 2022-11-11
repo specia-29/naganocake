@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get '/customers/mypage', to: 'customers#show'
     patch '/customers/mypage', to: 'customers#update'
     get '/public/customers/edit', to: 'customers#edit'
+    get '/customers/withdrawal', to: 'customers#withdrawal'
   end
 
   namespace :admin do
