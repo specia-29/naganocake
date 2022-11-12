@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to => 'homes#top'
     get '/about', to: 'homes#about'
-    get '/items', to: 'items#index'
     get '/customers/mypage', to: 'customers#show'
     patch '/customers/mypage', to: 'customers#update'
     get '/public/customers/edit', to: 'customers#edit'
@@ -26,6 +25,8 @@ Rails.application.routes.draw do
     post '/addresses', to: 'addresses#index'
     get 'addresses/:id/edit' => 'addresses#edit', as: 'edit_address'
     patch 'addresses/:id' => 'addresses#update', as: 'update_adress'
+    get 'items' => 'items#index'
+    get 'items/:id' => 'items#show'
   end
 
   namespace :admin do
