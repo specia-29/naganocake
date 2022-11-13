@@ -2,7 +2,8 @@
 
 <h3>会員の方はこちらからログイン</h3>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_with model: @customer, url: session_path(resource_name) do |f| %>
+<%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="row">
     <label class="col-lg-3">メールアドレス</label>
     <div class="col-lg-3">

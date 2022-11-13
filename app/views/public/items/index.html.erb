@@ -6,10 +6,12 @@
       <% @items.each do |item| %>
 
         <div class="card" style="width: 16rem;">
+          <%= link_to show_item_path(item.id) do %>
           <% if item.image.attached? %>
             <%= image_tag item.image, size: "200x100" %><br>
           <% else %>
             <%= image_tag 'no_image', size: "200x100" %><br>
+          <% end %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= item.name %></h5>

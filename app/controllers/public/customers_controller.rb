@@ -1,9 +1,11 @@
 class Public::CustomersController < ApplicationController
   def show
+    @genres = Genre.all
   end
 
   def edit
     @customer = current_customer
+    @genres = Genre.all
   end
 
   def update

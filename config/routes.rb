@@ -26,7 +26,12 @@ Rails.application.routes.draw do
     get 'addresses/:id/edit' => 'addresses#edit', as: 'edit_address'
     patch 'addresses/:id' => 'addresses#update', as: 'update_adress'
     get 'items' => 'items#index'
-    get 'items/:id' => 'items#show'
+    get 'items/:id' => 'items#show', as: 'show_item'
+    get 'cart_items' => 'cart_items#index', as: 'cart_item'
+    post 'cart_items' => 'cart_items#create'
+    patch 'cart_items/:id' => 'cart_items#update', as: 'update_cart_item'
+    delete 'cart_items/:id' => 'cart_items#destroy', as: 'destroy_cart_item'
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all_cart_item'
   end
 
   namespace :admin do
