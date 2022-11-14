@@ -1,2 +1,43 @@
-<h1>CartItems#index</h1>
-<p>Find me in app/views/cart_items/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>ショッピングカート</h2>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @cart_item.each do |cart_item| %>
+            <tr>
+              <td><%= cart_item.name %></td>
+              <td><%= order.taxin_price %></td>
+              <td>
+                <%= cart_item.amount %>
+                <%= cart_item.select :cart_item, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"]], include_blank: order.amount %>
+                <%= cart_item.submit "変更", class: "btn btn-success" %>
+              </td>
+              <td><%= item.taxin_price * amount %></td>
+            </tr>
+
+            <%= link_to " 買い物を続ける", root_path, class: "btn btn-primary" %>
+            <tr>
+              <td class="col-xs-2 table-secondary">合計金額</td>
+              <td><%= @total.round.to_s(:delimited)%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= link_to " 情報入力に進む", root_path, class: "btn btn-success" %>
+                <!--↑↑注文情報入力画面へ遷移-->
+    </div>
+  </div>
+</div>

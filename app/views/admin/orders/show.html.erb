@@ -31,7 +31,7 @@
             <div class="form-group">
               <label for="item_genre_id">ジャンル</label>
               ここの編集〜
-               <%= f.collection_select :status, @order.all, :id, :name, include_blank: "--選択してください--" %>
+               <%= f.collection_select :status, @orders, :id, :name, include_blank: "--選択してください--" %>
                <%= @order.submit "更新", class: "btn btn-success" %>
             </div>
           </tr>

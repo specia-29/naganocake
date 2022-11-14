@@ -21,13 +21,15 @@
               <td><%= order.amount %></td>
               <td>
                 <% if order.making_status == 0 %>
-                  制作不可
+                  入金待ち
                 <% else if order.making_status == 1 %>
-                  制作待ち
+                  入金確認
                 <% else if order.making_status == 2 %>
                   製作中
+                <% else if order.making_status == 3 %>
+                  発送準備中
                 <% else %>
-                　制作完了
+                　発送済み
                 <% end %>
               </td>
             </tr>
