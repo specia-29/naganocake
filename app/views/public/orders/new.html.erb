@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>注文情報入力</h2>
+      <div class="pay_method">
+        <div class="radio_button">
+        <%= form_with model: @order, url: new_order_path do |order| %>
+          <%= order.radio_button :payment_method, "クレジットカード" %><br>
+          <%= order.radio_button :payment_method, "銀行振込" %>
+          ラジオボタンの実装〜
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
