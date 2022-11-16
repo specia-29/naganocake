@@ -1,2 +1,39 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>注文履歴一覧</h2>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>注文日</th>
+            <th>配送先</th>
+            <th>注文商品</th>
+            <th>支払金額</th>
+            <th>ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+              <td><%= @cart_item.created_at %></td>
+              <td>
+                <%= @cart_item.postal_code %>
+                <%= @cart_item.address %>
+                <%= @cart_item.name %>
+              </td>
+              <td><%= @cart_items %></td>
+              <td><%= @total.round.to_s(:delimited)%></td>
+ここから編集再開（ステータス）
+              <td>ステータス</td>
+              <td>注文詳細のボタン</td>
+            </tr>
+        </tbody>
+      </table>
+
+      <%= link_to " 情報入力に進む", root_path, class: "btn btn-success" %>
+                <!--↑↑注文情報入力画面へ遷移-->
+    </div>
+  </div>
+</div>

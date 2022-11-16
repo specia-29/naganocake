@@ -1,9 +1,12 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
+    @address = Address.new
   end
 
   def check
+    @cart_item = current_customer.cart_items
+    @cart_items = current_customer.cart_items.all
   end
 
   def completion
@@ -16,6 +19,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @cart_item = current_customer.cart_items
+    @cart_items = current_customer.cart_items.all
   end
 
   private
