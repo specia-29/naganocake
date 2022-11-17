@@ -12,45 +12,42 @@
 
     <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
-      <div class="container">
+      <!--<div class="container">-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-          <nav class="nav navbar-nav navbar-left">
-            <%= link_to root_path do %>
-            <%= image_tag "logo.png" %>
-            <% end %>
-          </nav>
         </button>
-
-            <ul class="navbar-nav ml-auto">
+        <span class="navbar-toggler-icon"></span>
+          <nav class="navbar navbar-expand-sm navbar-dark">
+            <%= link_to root_path do %>
+            <%= image_tag "logo.png", size: '300x100' %>
+            <% end %>
+            <ul class="nav navbar-nav">
               <% if customer_signed_in? %>
-              <li>ようこそ、<%= current_customer.last_name %>さん！</li>
-              <li class="nav-item"><%= link_to "マイページ", customers_mypage_path, class: 'btn btn-default' %></li>
-              <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'btn btn-default' %></li>
-              <li class="nav-item"><%= link_to "カート", cart_item_path, class: 'btn btn-default' %></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-default' %></li>
+              <li class="nav-item ml-5">ようこそ、<%= current_customer.last_name %>さん！</li>
+              <li class="nav-item"><%= link_to "マイページ", customers_mypage_path, class: 'nav-link text-dark border ml-5' %></li>
+              <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'nav-link text-dark border ml-5' %></li>
+              <li class="nav-item"><%= link_to "カート", cart_item_path, class: 'nav-link text-dark border ml-5' %></li>
+              <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark border ml-5' %></li>
 
               <% elsif admin_signed_in? %>
-              <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class: 'btn btn-default' %></li>
-              <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: 'btn btn-default' %></li>
-              <li class="nav-item"><%= link_to "注文履歴一覧", admin_root_path(@customer.id), class: 'btn btn-default' %></li>
-              <li class="nav-item"><%= link_to "ジャンル一覧", admin_genres_path(@customer.id), class: 'btn btn-default' %></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-default' %></li>
+              <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class: 'nav-link text-dark border ml-5' %></li>
+              <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-dark border ml-5' %></li>
+              <li class="nav-item"><%= link_to "注文履歴一覧", admin_root_path(@customer.id), class: 'nav-link text-dark border ml-5' %></li>
+              <li class="nav-item"><%= link_to "ジャンル一覧", admin_genres_path(@customer.id), class: 'nav-link text-dark border ml-5' %></li>
+              <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark border ml-5' %></li>
 
               <% else %>
-              <li class="nav-item"><%= link_to "About", about_path, class: 'btn btn-default' %></li>
-              <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'btn btn-default' %></li>
-              <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: 'btn btn-default' %></li>
-              <li class="nav-item"><%= link_to "ログイン", new_customer_session_path, class: 'btn btn-default' %></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-default' %></li>
+              <li class="nav-item"><%= link_to "About", about_path, class: 'nav-link text-dark border ml-5' %></li>
+              <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'nav-link text-dark border ml-5' %></li>
+              <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark border ml-5' %></li>
+              <li class="nav-item"><%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark border ml-5' %></li>
               <% end %>
             </ul>
+          </nav>
 
-
-        </div>
+        <!--</div>-->
       </header>
-      <main>
+      <main class="mb-auto">
       <%= yield %>
       </main>
     </body>
