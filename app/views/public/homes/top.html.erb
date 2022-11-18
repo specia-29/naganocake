@@ -4,16 +4,18 @@
     <%= render "public/shared/sidebar", genres: @genres %>
 
     <div class="col-xl-10 mx-auto">
+      <div class="w-auto p-5 text-center">
         <p>
           ようこそ、ながのCAKEへ！<br>
           このサイトは、ケーキ販売のECサイトになります。<br>
           会員でない方も商品の閲覧はできますが、<br>
           購入には会員登録が必要になります。
         </p>
+      </div>
 
       <h3>新着商品</h3>
       <div class="d-flex flex-wrap">
-        <div class="card" style="width: 15rem;">
+        <div class="card ml-4 mb-4" style="width: 15rem;">
           <% @items.each do |item| %>
           <%= link_to show_item_path(item.id) do %>
           <% if item.image.attached? %>
@@ -27,8 +29,8 @@
           </div>
         </div>
           <% end %>
-      </div>
         <% end %>
+        </div>
         <%= link_to "全ての商品を見る>", items_path %>
       </div>
 
