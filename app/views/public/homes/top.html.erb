@@ -1,4 +1,9 @@
-    <div class="col-xl-">
+<div class="container">
+  <div class="row">
+
+    <%= render "public/shared/sidebar", genres: @genres %>
+
+    <div class="col-xl-10 mx-auto">
         <p>
           ようこそ、ながのCAKEへ！<br>
           このサイトは、ケーキ販売のECサイトになります。<br>
@@ -8,8 +13,9 @@
 
       <h3>新着商品</h3>
       <div class="d-flex flex-wrap">
-        <% @items.each do |item| %>
-        <div class="card" style="width: 16rem;">
+        <div class="card" style="width: 15rem;">
+          <% @items.each do |item| %>
+          <%= link_to show_item_path(item.id) do %>
           <% if item.image.attached? %>
             <%= image_tag item.image, size: "200x100" %><br>
           <% else %>
@@ -20,10 +26,15 @@
             <p class="card-text">¥<%= item.price %></p>
           </div>
         </div>
+          <% end %>
       </div>
         <% end %>
-
         <%= link_to "全ての商品を見る>", items_path %>
-    </div>
+      </div>
+
   </div>
 </div>
+
+
+<!--新着順に4商品のみ並べる-->
+<!--斟酌商品のレイアウトがおかしい-->
