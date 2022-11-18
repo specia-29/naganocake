@@ -1,16 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <div class="d-flex flex-wrap">
+
+    <%= render "public/shared/sidebar", genres: @genres %>
+
+    <div class="col-xl-10 mx-auto d-flex flex-wrap">
       <h3>商品一覧(全<%= @items.count %>件)</h3>
+      <div class="d-flex flex-wrap">
       <% @items.each do |item| %>
 
-        <div class="card" style="width: 16rem;">
+        <div class="card ml-4 mb-4" style="width: 12rem;">
           <%= link_to show_item_path(item.id) do %>
           <% if item.image.attached? %>
-            <%= image_tag item.image, size: "200x100" %><br>
+            <%= image_tag item.image, size: "150x100" %><br>
           <% else %>
-            <%= image_tag 'no_image', size: "200x100" %><br>
+            <%= image_tag 'no_image', size: "150x100" %><br>
           <% end %>
           <% end %>
           <div class="card-body">
@@ -18,7 +21,6 @@
             <p class="card-text">¥<%= item.price %></p>
           </div>
         </div>
-      </div>
         <% end %>
     </div>
   </div>
