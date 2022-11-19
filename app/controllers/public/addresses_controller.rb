@@ -11,9 +11,9 @@ class Public::AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     if @address.save
-      redirect_to addresses_path(@address)
+      redirect_to addresses_path(@address.id)
     else
-      redirect_to new_admin_item_path
+      render "public/addresses/index"
     end
   end
 
@@ -36,7 +36,7 @@ class Public::AddressesController < ApplicationController
 
   private
   def address_params
-    params.require(:item).permit(:customer_id, :name, :postal_code, :address)
+    params.require(:address).permit(:customer_id, :name, :postal_code, :address)
   end
 
 end
