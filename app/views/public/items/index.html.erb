@@ -3,7 +3,7 @@
 
     <%= render "public/shared/sidebar", genres: @genres %>
 
-    <div class="col-xl-10 mx-auto d-flex flex-wrap">
+    <div class="col-xl-10 mx-auto">
       <h3>商品一覧(全<%= @items.count %>件)</h3>
       <div class="d-flex flex-wrap">
       <% @items.each do |item| %>
@@ -22,9 +22,7 @@
           </div>
         </div>
         <% end %>
-        <%= paginate @items %>
-    </div>
+      </div>
+    <%= paginate @items, class: 'text-center' %>
   </div>
 </div>
-
-<!--ページネーション-->
