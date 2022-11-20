@@ -1,6 +1,9 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  <div class="row mt-4">
+
+    <%= render "public/shared/sidebar", genres: @genres %>
+
+    <div class="col-xl-3 mx-auto">
       <div class="item_image">
       <% if @item.image.attached? %>
         <%= image_tag item.image, size: "300x300" %>
@@ -8,7 +11,9 @@
         <%= image_tag 'no_image', size: "300x300" %>
       <% end %>
       </div>
-      <table class="table">
+    </div>
+    <div class="col-xl-5 ml-3">
+      <table class="table table-borderless ">
         <tbody>
         <tr>
           <td><h2><%= @item.name %></h2></td>
@@ -17,14 +22,17 @@
           <td><%= @item.introduction %></td>
         </tr>
         <tr>
-          <td>¥<%= @item.price %>(税抜)</td>
+          <td class="d-flex flex-wrap align-items-end mt-3">
+            <h3>¥<%= @item.price %></h3>
+            <h5 class="pl-1">(税抜)</h5>
+          </td>
         </tr>
         </tbody>
       </table>
 
       <%= form_with model: @item, url: items_path do |item| %>
         <%= item.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"]], include_blank: "個数選択" %>
-        <%= item.submit "カートに入れる", class: "btn btn-success" %>
+        <%= item.submit "カートに入れる", class: "btn btn-success ml-5" %>
       <% end %>
     </div>
   </div>
