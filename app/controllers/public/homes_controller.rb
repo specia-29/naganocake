@@ -1,8 +1,8 @@
 class Public::HomesController < ApplicationController
   def top
     @genres = Genre.all
-    @items = Item.all.order(created_at: :desc)
-    # @items = Item.order(Arel.sql("created_at: :desc")).params[:page].per(4)
+    @items = Item.order(created_at: :desc).limit(4)
+    # 新着順・4件のみ表示
   end
 
   def about
