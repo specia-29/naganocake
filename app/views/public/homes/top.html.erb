@@ -3,25 +3,32 @@
 
     <%= render "public/shared/sidebar", genres: @genres %>
 
-    <div class="col-xl-10 col-xs-offset-2 mx-auto">
+    <div class="col-xl-10">
       <div class="w-auto p-5 text-center">
+        <div class="card" style="max-width: 800px;">
+        <%= image_tag 'no_image', size: "600x200" %>
+        <div class="card-img-overlay bg-white">
         <p>
           ようこそ、ながのCAKEへ！<br>
           このサイトは、ケーキ販売のECサイトになります。<br>
           会員でない方も商品の閲覧はできますが、<br>
           購入には会員登録が必要になります。
         </p>
+        </div>
       </div>
+    </div>
+
+
 
       <h3>新着商品</h3>
       <div class="d-flex flex-wrap">
-        <div class="card ml-4 mb-4" style="width: 15rem;">
           <% @items.each do |item| %>
+          <div class="card mr-1 mb-4" style="width: 13rem;">
           <%= link_to show_item_path(item.id) do %>
           <% if item.image.attached? %>
             <%= image_tag item.image, size: "200x100" %><br>
           <% else %>
-            <%= image_tag 'no_image', size: "200x100" %><br>
+            <%= image_tag 'no_image', size: "150x75" %><br>
           <% end %>
           <div class="card-body">
             <h5 class="card-title text-dark"><%= item.name %></h5>
@@ -30,13 +37,11 @@
         </div>
           <% end %>
         <% end %>
-        </div>
-        <%= link_to "全ての商品を見る>", items_path %>
       </div>
-
+      <%#= paginate(@items) %>
+      <%= link_to "全ての商品を見る>", items_path %>
+    </div>
   </div>
 </div>
 
 
-<!--新着順に4商品のみ並べる-->
-<!--新着商品のレイアウトがおかしい-->

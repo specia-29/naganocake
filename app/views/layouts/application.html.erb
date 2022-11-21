@@ -12,7 +12,6 @@
 
     <body class="d-flex flex-column vh-100">
     <header class="shadow-sm mb-3">
-      <!--<div class="container">-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         </button>
@@ -44,11 +43,14 @@
               <% end %>
             </ul>
           </nav>
-
-        <!--</div>-->
       </header>
-      <main class="mb-auto">
+
+      <main class="mb-3">
       <%= yield %>
       </main>
+
+      <footer>
+        <div class="fixed-bottom border-top" style="height:20%;">
+      </footer>
     </body>
 </html>

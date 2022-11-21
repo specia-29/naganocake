@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>配送先編集</h2>
+    <div class="col-lg-12">
+      <h3 class="ml-5 mt-3 mb-4">配送先編集</h3>
         <%= form_with model: @address, url: addresses_path do |f| %>
         <div class="row">
-          <label class="col-lg-3">郵便番号</label>
+          <label class="col-lg-3">郵便番号(ハイフンなし)</label>
           <div class="col-lg-3">
             <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
           </div>
@@ -12,7 +12,7 @@
         <div class="row">
           <label class="col-lg-3">住所</label>
           <div class="col-lg-3">
-            <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+            <%= f.text_field :address, autofocus: true, autocomplete: "address", size: 60 %>
           </div>
         </div><br>
         <div class="row">
@@ -20,6 +20,7 @@
           <div class="col-lg-3">
             <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
           </div>
+          <div class="col-lg-3"></div>
           <div class="col-lg-3">
             <%= f.submit "変更内容を保存", class: 'btn btn-success' %>
           </div>

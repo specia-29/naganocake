@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>注文情報確認</h2>
-
-      <table class="table">
+    <div class="col-lg-12">
+      <h2 class="ml-4 mt-3 mb-2">注文情報確認</h2>
+    </div>
+      <table class="table col-lg-8">
         <thead>
           <tr>
             <th>商品名</th>
@@ -24,13 +24,14 @@
               </td>
               <td><%= item.taxin_price * amount %></td>
             </tr>
+          <% end %>
         </tbody>
       </table>
 
       <table>
         <tr>
           <td class="col-xs-2 table-secondary">送料</td>
-          <td><%= order.shipping_cost %></td>
+          <td>800</td>
         </tr>
         <tr>
           <td class="col-xs-2 table-secondary">商品合計</td>
@@ -52,10 +53,6 @@
       </div>
 
       <%= f.submit "注文を確定する", class: 'btn btn-success' %>
-      <% end %>
 
 
-
-    </div>
-  </div>
 </div>
