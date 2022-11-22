@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    root :to => 'homes#top'
+    resources :items
+    resources :genres
+    resources :customers
+    resources :orders
+    resources :order_details
+
+  end
   # root to: "public/registrations#new"
   # 顧客用
   # URL /customers/sign_in ...
@@ -42,14 +51,6 @@ Rails.application.routes.draw do
     get 'orders/:id' => 'orders#show', as: 'show_order'
   end
 
-  namespace :admin do
-    root :to => 'homes#top'
-    resources :items
-    resources :genres
-    resources :customers
-    resources :orders
-    resources :order_details
 
-  end
 end
 

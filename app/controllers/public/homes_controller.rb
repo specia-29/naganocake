@@ -1,4 +1,8 @@
 class Public::HomesController < ApplicationController
+
+  # ログイン済ユーザーのみにアクセスを許可する
+  before_action :authenticate_customer!
+
   def top
     @genres = Genre.all
     @items = Item.order(created_at: :desc).limit(4)
