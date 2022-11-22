@@ -1,13 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>商品一覧</h2>
+    <div class="col-xl-12">
 
-  <div class="text-right">
-      <%= link_to new_admin_item_path class:"btn btn-lg btn-primary" do %>
-      <i class="fal fa-plus-circle" aria-hidden="true"></i>
-      <% end %>
-  </div>
+    <div class="row">
+      <div class="col-lg-10 pl-3 mt-3 mb-3">
+        <h3>商品一覧</h3>
+      </div>
+      <div class="col-lg-2  mt-3 mb-3 text-right">
+          <%= link_to new_admin_item_path class:"btn btn-lg btn-primary" do %>
+          <i class="fas fa-plus-circle fa-2x"></i>
+          <% end %>
+      </div>
+    </div>
 
       <table class="table">
         <thead>
@@ -30,15 +34,16 @@
               <td><%= item.price %></td>
               <td><%= item.genre.name%></td>
               <td><% if item.is_active == false %>
-              販売中
+              <p class="text-success mb-0">販売中</p>
               <% else %>
-              販売停止中
+              <p class="text-secondary mb-0">販売停止中</p>
               <% end %>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
+      <%= paginate @items %>
     </div>
   </div>
 </div>
