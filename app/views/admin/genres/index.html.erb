@@ -1,16 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>ジャンル一覧・追加</h2>
+    <div class="col-xl-12">
+      <h3 class="ml-4 mt-3 mb-5">ジャンル一覧・追加</h3>
 
       <%= form_with model: @genre, url: admin_genres_path do |f| %>
-        <h4>ジャンル名</h4>
-        <%= f.text_field :name %>
+      <div class="d-flex mb-5">
+        <p class="mb-0 pt-2">ジャンル名</p>
+        <%= f.text_field :name, class: "ml-4 mr-4" %>
         <%= f.submit '新規登録', class: "btn btn-success" %>
       <% end %>
+      </div>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-xl-4">
       <table class="table">
-        <thead>
+        <thead class="table-secondary">
           <tr>
             <th>ジャンル</th>
             <th></th>
