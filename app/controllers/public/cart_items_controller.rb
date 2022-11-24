@@ -19,6 +19,8 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
+    @genres = Genre.all
+    @items = Item.page(params[:page])
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
     @cart_item.item_id = params[:item_id]
