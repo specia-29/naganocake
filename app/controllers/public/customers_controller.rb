@@ -12,7 +12,6 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     if @customer.update(customer_params)
       redirect_to customers_mypage_path
-      flash[:notice_update] = "ジャンル情報を更新しました！"
     else
       render 'edit'
     end
@@ -23,6 +22,10 @@ class Public::CustomersController < ApplicationController
   end
 
   def stat_update
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   private

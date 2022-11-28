@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     patch '/customers/mypage', to: 'customers#update'
     get '/public/customers/edit', to: 'customers#edit'
     get '/customers/withdrawal', to: 'customers#withdrawal'
+    patch 'customers/stat_update', to: 'customers#stat_update', as: 'destroy_customer'
     get '/addresses', to: 'addresses#index'
     post '/addresses', to: 'addresses#create'
     get 'addresses/:id/edit' => 'addresses#edit', as: 'edit_address'
