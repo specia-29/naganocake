@@ -8,8 +8,8 @@
       </div>
     </div>
 
-      <table class="table table-bordered table-secondary border-dark">
-        <thead>
+      <table class="table table-bordered border-dark">
+        <thead class="table-secondary">
           <tr>
             <th>商品名</th>
             <th>単価(税込)</th>
@@ -22,14 +22,29 @@
         <tbody>
           <% @cart_item.each do |cart_item| %>
             <tr>
-              <td><%= cart_item.name %></td>
-              <td><%= order.taxin_price %></td>
               <td>
-                <%= cart_item.amount %>
-                <%= cart_item.select :cart_item, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"]], include_blank: order.amount %>
-                <%= cart_item.submit "変更", class: "btn btn-success" %>
+                <div class="d-flex">
+                <% if cart_item.item.image.attached? %>
+                  <%= image_tag cart_item.item.image, size: "60x40" %><br>
+                <% else %>
+                  <%= image_tag 'no_image', size: "60x40" %><br>
+                <% end %>
+                <%= cart_item.item.name %>
+                </div>
               </td>
-              <td><%= item.taxin_price * amount %></td>
+              <td><%= cart_item.item.with_tax_price %></td>
+              <td>
+                <%= form_for cart_item, url: update_cart_item_path(cart_item) do |f| %>
+                <%= f.number_field :amount, min:1, max: 20 %>
+                <%= f.submit "変更" , class: "btn btn-success" %>
+                <% end %>
+              </td>
+              <td><%#= cart_item.subtotal%></td>
+              <td>
+                <div class="text-center">
+                  <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: 'btn btn-danger' %>
+                </div>
+              </td>
             </tr>
           <% end %>
         </tbody>
@@ -42,7 +57,7 @@
         <table class="col-lg-2 mt-3 ml-5">
           <tr>
             <td class="table table-bordered border-dark table-secondary">合計金額</td>
-            <td class="table table-bordered border-dark"><%= @total.round.to_s(:delimited) %></td>
+            <td class="table table-bordered border-dark"><%#= @total.round.to_s(:delimited) %></td>
           </tr>
         </table>
       </div>
