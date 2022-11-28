@@ -1,4 +1,6 @@
 class Public::CartItemsController < ApplicationController
+
+
   def index
     @cart_item = current_customer.cart_items
     @cart_items = current_customer.cart_items.all
@@ -23,12 +25,11 @@ class Public::CartItemsController < ApplicationController
     @items = Item.page(params[:page])
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    @cart_item.item_id = params[:item_id]
+    # @cart_item.item_id = params[:item_id]
     if @cart_item.save
       flash[:notice] = "#{@cart_item.item.name}をカートに追加しました。"
       redirect_to cart_items_path
     else
-      flash[:alert] = "個数を選択してください"
       render "public/items/index"
     end
   end

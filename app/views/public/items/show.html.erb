@@ -33,6 +33,7 @@
       <%= form_with model: @cart_item, url: cart_items_path, method: :post do |item| %>
         <%= item.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"]], include_blank: "個数選択　　" %>
         <%= item.submit "カートに入れる", class: "btn btn-success ml-5" %>
+        <%= item.hidden_field :item_id, :value => @item.id %>
       <% end %>
     </div>
   </div>
