@@ -9,7 +9,10 @@ class Public::CartItemsController < ApplicationController
 
   end
 
-  def update
+  def destroy_all
+    CartItem.destroy_all
+    current_customer.cart_items.destroy_all
+    redirect_to cart_item_path
   end
 
   def destroy
@@ -18,10 +21,6 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_item_path
   end
 
-  def destroy_all
-    @cart_item_all = CartItem.all
-    @cart_item_all.destroy
-  end
 
   def create
     @genres = Genre.all

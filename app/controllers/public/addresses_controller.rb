@@ -24,7 +24,7 @@ class Public::AddressesController < ApplicationController
       flash[:notice_update] = "ジャンル情報を更新しました！"
     else
       @addresses = Address.all
-      render 'edit'
+      render 'public/addresses/edit'
     end
   end
 
