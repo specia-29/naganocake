@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <td class="d-flex flex-wrap align-items-end mt-3">
-            <h3>¥<%= @item.price %></h3>
+            <h3>¥<%= @item.with_tax_price.to_s(:delimited) %></h3>
             <h5 class="pl-1">(税込)</h5>
           </td>
         </tr>

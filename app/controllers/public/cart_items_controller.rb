@@ -3,10 +3,7 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_item = current_customer.cart_items
-    @cart_items = current_customer.cart_items.all
-    # カートに入っている商品の合計金額
-    # @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
-
+    @total = 0
   end
 
   def destroy_all
@@ -27,12 +24,16 @@ class Public::CartItemsController < ApplicationController
     @items = Item.page(params[:page])
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    if @cart_item.save
-      flash[:notice] = "#{@cart_item.item.name}をカートに追加しました。"
-      redirect_to cart_items_path
-    else
-      render "public/items/index"
+    @cart_items = current_customer.cart_items.all
+    @cart_items.each do |cart_item|
+      if cart_item.item_id == @cart_item.item_id
+        new_amount = cart_item.amount + @cart_item.amount
+        cart_item.update_attribute(:amount, new_amount)
+        @cart_item.delete
+      end
     end
+    @cart_item.save
+    redirect_to cart_items_path
   end
 
   def update
