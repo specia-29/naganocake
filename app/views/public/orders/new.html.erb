@@ -19,7 +19,7 @@
       <div class="address">
         <h4>お届け先</h4>
         <div class="radio_button pl-3">
-        <%= form_with model: @address, url: new_order_path do |address| %>
+        <%= form_with model: @address, url: orders_check_path do |address| %>
           <%= address.radio_button :address, :default, checked: true %>
           <%= address.label :address, "ご自身の住所" %><br>
           <div class="pl-3 pb-2">
@@ -31,8 +31,8 @@
           <%= address.radio_button :address, :list %>
           <%= address.label :address, "登録済住所から選択" %><br>
           <div class="pl-3 pb-2">
-            <%#= address.collection_select :address, current_customer.address.all, :id, :address, include_blank: "--選択してください--" %>
-            <%#= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %>
+            <%#= address.collection_select :customer_id, @addresses, :id, :address, include_blank: "--選択してください--" %>
+            <!--f.collection_select カラム名, 要素の配列, value属性の項目, テキストの項目, { prompt: "選択してください" } -->
           </div>
 
           <%= address.radio_button :address, :new %>

@@ -2,11 +2,13 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @address = Address.new
+    @addresses = current_customer.address
   end
 
   def check
     @cart_item = current_customer.cart_items
     @cart_items = current_customer.cart_items.all
+    # @order = Order.find(order_params)
   end
 
   def completion
