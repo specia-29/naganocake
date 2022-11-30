@@ -8,6 +8,7 @@ class Public::OrdersController < ApplicationController
   def check
     @cart_item = current_customer.cart_items
     @cart_items = current_customer.cart_items.all
+    @total = 0
     # @order = Order.find(order_params)
   end
 
