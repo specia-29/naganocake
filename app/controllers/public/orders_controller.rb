@@ -2,7 +2,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @address = Address.new
-    @addresses = current_customer.address
+    @addresses = current_customer.addresses
   end
 
   def check
