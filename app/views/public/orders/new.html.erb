@@ -5,60 +5,58 @@
       <div class="pay_method">
         <h4>支払方法</h4>
         <div class="radio_button">
-        <%= form_with model: @order, url: new_order_path do |order| %>
+        <%= form_with model: @order, url: check_order_path do |order| %>
         <div class="pl-3">
-          <%= order.radio_button :payment_method, 1, checked: true %>
-          <%= order.label :payment_method, "クレジットカード" %><br>
-          <%= order.radio_button :payment_method, 2 %>
-          <%= order.label :payment_method, "銀行振込" %>
+          <%= order.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
+          <%= order.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %><br>
+          <%= order.radio_button :payment_method, Order.payment_methods.key(1) %>
+          <%= order.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
         </div>
-        <% end %>
         </div>
       </div>
 
       <div class="address">
         <h4>お届け先</h4>
         <div class="radio_button pl-3">
-        <%= form_with model: @address, url: orders_check_path do |address| %>
-          <%= address.radio_button :address, :default, checked: true %>
-          <%= address.label :address, "ご自身の住所" %><br>
+          <%= order.radio_button :address, :default, checked: true %>
+          <%= order.label :address, "ご自身の住所" %><br>
           <div class="pl-3 pb-2">
             〒<%= current_customer.postal_code %>
             <%= current_customer.address %><br>
             <%= current_customer.last_name + current_customer.first_name %><br>
           </div>
 
-          <%= address.radio_button :address, :list %>
-          <%= address.label :address, "登録済住所から選択" %><br>
+          <%= order.radio_button :address, :list %>
+          <%= order.label :address, "登録済住所から選択" %><br>
           <div class="pl-3 pb-2">
-            <%= address.collection_select :address_id, @addresses, :id, :address, { prompt: "選択してください" } %>
+            <%= order.collection_select :address_id, @addresses, :id, :address_display %>
             <!--f.collection_select カラム名, 要素の配列, value属性の項目, テキストの項目, { prompt: "選択してください" } -->
           </div>
 
-          <%= address.radio_button :address, :new %>
-          <%= address.label :address, "新しいお届け先" %>
+          <%= order.radio_button :address, :new %>
+          <%= order.label :address, "新しいお届け先" %>
           <div class="pl-3 pb-2">
             <div class="row">
               <label class="col-lg-3">郵便番号(ハイフンなし)</label>
               <div class="col-lg-3 mb-2">
-                <%= address.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+                <%= order.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
               </div>
             </div>
             <div class="row">
               <label class="col-lg-3">住所</label>
               <div class="col-lg-3 mb-2">
-                <%= address.text_field :address, autofocus: true, autocomplete: "address", size: 60 %>
+                <%= order.text_field :address, autofocus: true, autocomplete: "address", size: 60 %>
               </div>
             </div>
             <div class="row">
               <label class="col-lg-3">宛名</label>
               <div class="col-lg-3 mb-2">
-                <%= address.text_field :name, autofocus: true, autocomplete: "name" %>
+                <%= order.text_field :name, autofocus: true, autocomplete: "name" %>
               </div>
             </div>
           </div>
           <div class="text-center">
-            <%= address.submit "確認画面へ進む", class: 'btn btn-primary' %>
+            <%= order.submit "確認画面へ進む", class: 'btn btn-primary' %>
           </div>
         <% end %>
         </div>
