@@ -17,7 +17,7 @@
           <% @cart_item.each do |cart_item| %>
             <tr>
               <td><%= cart_item.item.name %></td>
-              <td><%= cart_item.item.with_tax_price %></td>
+              <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
               <td>
                 <%= cart_item.amount %>
               </td>
@@ -58,7 +58,9 @@
     </div>
 
     <div class="text-center mt-5">
-      <%= link_to "注文を確定する", completion_order_path, class: "btn btn-success" %>
+      <%= form_with model: @order, url: create_order_path do |f| %>
+        <%= f.submit "注文を確定する", class: 'btn btn-success' %>
+      <% end %>
     </div>
 
 </div>

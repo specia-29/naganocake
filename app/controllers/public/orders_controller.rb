@@ -38,6 +38,8 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @cart_item.save
+    redirect_to completion_order_path
   end
 
   def index
