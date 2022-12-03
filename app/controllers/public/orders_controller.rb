@@ -10,10 +10,27 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.all
     @total = 0
     @order = Order.new(order_params)
-    @address = Address.find(params[:order][:address_id])
-    @order.postal_code = @address.postal_code
-    @order.address = @address.address
-    @order.name = @address.name
+    if params[:order][:address_select] == "default"
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.last_name + current_customer.first_name
+    elsif params[:order][:address_select] == "list"
+      @address = Address.find(params[:order][:address_id])
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    elsif params[:order][:address_select] == "new"
+      @address = Address.new
+      @address.customer_id = current_customer.id
+      @address.postal_code = (params[:order][:postal_code])
+      @address.address = (params[:order][:address])
+      @address.name = (params[:order][:name])
+      @address.save
+      @order.postal_code = @address.postal_code
+      @order.address = @address.address
+      @order.name = @address.name
+    end
+
   end
 
   def completion
