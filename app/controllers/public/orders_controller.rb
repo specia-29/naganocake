@@ -38,13 +38,24 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @cart_item.save
-    redirect_to completion_order_path
+    @order.customer_id = current_customer.id
+    @order.save
+    # order_detailに保存
+    current_customer.cart_items.each do |cart_item| #カート内商品を1つずつ取り出しループ
+      @order_detail = OrderDetail.new #初期化宣言
+      @order_detail.order_id =  @order.id #order注文idを紐付けておく
+      @order_detail.item_id = cart_item.item_id #カート内商品idを注文商品idに代入
+      @order_detail.amount = cart_item.amount #カート内商品の個数を注文商品の個数に代入
+      @order_detail.making_status = 0
+      @order_detail.save #注文商品を保存
+    end #ループ終わり
+        current_customer.cart_items.destroy_all #カートの中身を削除
+        redirect_to completion_order_path
   end
 
   def index
-    @cart_item = current_customer.cart_items
-    @cart_items = current_customer.cart_items.all
+    @order = current_customer.orders
+    @orders = current_customer.orders.all
   end
 
   def show

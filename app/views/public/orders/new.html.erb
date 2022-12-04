@@ -7,10 +7,13 @@
         <div class="radio_button">
         <%= form_with model: @order, url: check_order_path do |order| %>
         <div class="pl-3">
-          <%= order.radio_button :payment_method, Order.payment_methods.key(0), checked: true %>
-          <%= order.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %><br>
-          <%= order.radio_button :payment_method, Order.payment_methods.key(1) %>
-          <%= order.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+          <p>
+            <%= order.radio_button :payment_method,:credit_card,  checked: "checked" %>
+            <%= order.label :payment_method, "クレジットカード" %>
+          <br>
+            <%= order.radio_button :payment_method, :transfer %>
+            <%= order.label :payment_method, "銀行振込" %>
+          </p>
         </div>
         </div>
       </div>
