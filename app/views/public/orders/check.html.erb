@@ -31,7 +31,7 @@
       <table class="table table-bordered col-lg-3 mx-auto">
         <tr>
           <td class="table-secondary">送料</td>
-          <td>800</td>
+          <td><%= @order.shipping_cost %></td>
         </tr>
         <tr>
           <td class="table-secondary">商品合計</td>
@@ -39,7 +39,7 @@
         </tr>
         <tr>
           <td class="table-secondary">請求金額</td>
-          <td><%= (@total + 800).to_s(:delimited) %></td>
+          <td><%= (@total + @order.shipping_cost).to_s(:delimited) %></td>
         </tr>
       </table>
     </div>
@@ -63,6 +63,7 @@
          <%= f.hidden_field :payment_method, value: @order.payment_method %>
          <%= f.hidden_field :address, value: @order.address %>
          <%= f.hidden_field :name, value: @order.name %>
+         <%= f.hidden_field :total_payment, value: @total + @order.shipping_cost %>
          <%= f.submit "注文を確定する", class: 'btn btn-success' %>
       <% end %>
     </div>
