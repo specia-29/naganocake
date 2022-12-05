@@ -47,6 +47,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.item_id = cart_item.item_id #カート内商品idを注文商品idに代入
       @order_detail.amount = cart_item.amount #カート内商品の個数を注文商品の個数に代入
       @order_detail.making_status = 0
+      @order_detail.price = cart_item.item.price
       @order_detail.save #注文商品を保存
     end #ループ終わり
         current_customer.cart_items.destroy_all #カートの中身を削除

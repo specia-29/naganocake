@@ -3,21 +3,22 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order_details = @order.order_details
+    @orders = Order.all
   end
 
   def update
-    @order = order.find(params[:id])
+    @order = Order.find(params[:id])
     if @order.update(order_params)
       redirect_to admin_order_path(@order)
-      flash[:notice_update] = "ジャンル情報を更新しました！"
+      flash[:notice_update] = "ステータス情報を更新しました！"
     else
-      @orders = order.all
-      render 'edit'
+      @orders = Order.all
     end
   end
 
   private
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
+    params.require(:order).permit(:postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status, :price)
   end
 end
