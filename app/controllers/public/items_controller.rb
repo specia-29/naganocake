@@ -2,7 +2,7 @@ class Public::ItemsController < ApplicationController
 
   def index
     @genres = Genre.all
-    @items = Item.page(params[:page])
+    @items = Item.page(params[:page]).where(is_active: 'false')
   end
 
   def show
