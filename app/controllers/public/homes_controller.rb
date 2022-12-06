@@ -1,7 +1,7 @@
 class Public::HomesController < ApplicationController
 
   # ログイン済ユーザーのみにアクセスを許可する
-  before_action :authenticate_customer!
+  # before_action :authenticate_customer!
 
   def top
     @genres = Genre.all

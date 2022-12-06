@@ -3,6 +3,7 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_item = current_customer.cart_items
+    @cart_items = current_customer.cart_items.all
     @total = 0
   end
 
@@ -32,8 +33,11 @@ class Public::CartItemsController < ApplicationController
         @cart_item.delete
       end
     end
-    @cart_item.save
+    if @cart_item.save
     redirect_to cart_items_path
+    else
+      render :new
+    end
   end
 
   def update
