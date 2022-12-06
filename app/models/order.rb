@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
 
-  has_many :order_details #中間テーブル
+  has_many :order_details, dependent: :destroy #中間テーブル
   has_many :items, through: :order_details  #注文には商品が多くある
   belongs_to :customer
 

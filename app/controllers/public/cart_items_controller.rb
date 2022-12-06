@@ -8,7 +8,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    CartItem.destroy_all
+    # CartItem.destroy_all
     current_customer.cart_items.destroy_all
     redirect_to cart_item_path
   end
@@ -33,11 +33,8 @@ class Public::CartItemsController < ApplicationController
         @cart_item.delete
       end
     end
-    if @cart_item.save
+    @cart_item.save
     redirect_to cart_items_path
-    else
-      render :new
-    end
   end
 
   def update
